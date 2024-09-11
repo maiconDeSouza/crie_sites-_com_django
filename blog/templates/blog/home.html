@@ -1,11 +1,25 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
 <head>
+    {% load static %}
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
 </head>
 <body>
-    <h1>Hello, Django!</h1>
+    <h1>Ultimas postagens</h1>
+    <ul>
+        {% for post in posts  %}
+            <li>
+                <a href="{% url 'post_details' post.id %}">
+                    <h2>{{ post.titulo }}</h2>
+                    <h4>{{ post.autor }}</h4>
+                    <p>{{ post.resumo }}</p>
+                </a>
+            </li>
+        {% endfor %}
+    </ul>
+    
+    <img src="{% static "blog/image/img.webp" %}" alt="">
 </body>
 </html>
